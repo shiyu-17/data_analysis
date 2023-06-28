@@ -1,5 +1,5 @@
 #-*- codeing = utf-8 -*-
-# 爬取用户id，以及用户的基本信息
+
 
 from bs4 import BeautifulSoup     #网页解析，获取数据
 import re       #正则表达式，进行文字匹配
@@ -29,16 +29,16 @@ def GetFansId(tarid, num):
             i = 1
         url = baseurl + str(i) + lasturl + str(j)
         html = askURL(url)  # 保存获取到的网页源码
-        print(n)
-        print(html)
+        # print(n)
+        # print(html)
 
         userid = re.findall(findId, html)
-        uid.append(userid)
+        uid.append(userid[0])
 
     return uid
 
 
-def GetFriendsId(tarid,num):
+def GetFriendsId(tarid, num):
     baseurl = "https://weibo.com/ajax/friendships/friends?page="
     # https://weibo.com/ajax/friendships/friends?page=2&uid=1776448504
     last1url = "&uid="
@@ -49,30 +49,30 @@ def GetFriendsId(tarid,num):
     for i in range(1, num):  # 调用获取页面信息的函数
         url = baseurl + str(i) + lasturl
         html = askURL(url)  # 保存获取到的网页源码
-        print(i)
-        print(html)
+        # print(i)
+        # print(html)
 
         userid = re.findall(findId, html)
-        uid.append(userid)
+        uid.append(userid[0])
 
     return uid
 
 
 
 
-# 爬取网页
-def getData(baseurl, lasturl,num):
-    uid = []
-    for i in range(1, num):       # 调用获取页面信息的函数
-        url = baseurl + str(i) + lasturl
-        html = askURL(url)      # 保存获取到的网页源码
-        print(i)
-        print(html)
-
-        userid = re.findall(findId, html)
-        uid.append(userid)
-
-    return uid
+# # 爬取网页
+# def getData(baseurl, lasturl,num):
+#     uid = []
+#     for i in range(1, num):       # 调用获取页面信息的函数
+#         url = baseurl + str(i) + lasturl
+#         html = askURL(url)      # 保存获取到的网页源码
+#         print(i)
+#         print(html)
+#
+#         userid = re.findall(findId, html)
+#         uid.append(userid)
+#
+#     return uid
 
 
 # 得到指定一个URL的网页内容
@@ -108,7 +108,7 @@ def askURL(url):
 if __name__ == "__main__":          # 当程序执行时
 # 调用函数
     targetId = "1776448504"
-    num = 200
+    num = 20
     fansId = GetFansId(targetId, num)
     print(fansId)
     # friendsId = GetFriendsId(targetId, num)
