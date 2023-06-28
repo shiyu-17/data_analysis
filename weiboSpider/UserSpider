@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+# 爬取用户微博内容
 
 import csv
 import os
