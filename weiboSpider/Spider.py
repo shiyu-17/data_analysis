@@ -9,14 +9,14 @@ import UserInfoSpider
 
 
 if __name__ == "__main__":
-    id = '1776448504' #
-    num = 10
+    id = '1776448504' # 选择博主，爬取其粉丝信息
+    num = 10 # 选择爬取粉丝数量
     fansId = UserIdSpider.GetFansId(id, num)
     print(fansId)
 
     for i in range(0, num - 1):
-        user_info = UserInfoSpider.getUserInfo(fansId[i])  # 1776448504
+        user_info = UserInfoSpider.getUserInfo(fansId[i])  # 获取用户基本信息
         obj = pd.Series(user_info)
         obj.to_csv('userinfo.csv', mode='a')
-        UserSpider.WeiboUserScrapy(fansId[i], filter=0)
+        UserSpider.WeiboUserScrapy(fansId[i], filter=0) # 获取用户微博内容
         # print(obj)
