@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # 1000名微博用户信息，包括但不限于用户发表的微博或知乎内容、关注对象、粉丝
+# 直接运行这个文件就可以
 
 import pandas as pd
 import UserIdSpider
